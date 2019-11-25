@@ -86,6 +86,11 @@
             <div class="form-row">
 
                 <div class="form-group col-md-4">
+                    <label>Correo electrónico</label>
+                    <input type="email" name="correoelectronico" class="form-control"  placeholder="Correo Electronico">
+                </div>
+
+                <div class="form-group col-md-4">
 
                     <label>Nombre del niño</label>
                     <input type="text" name="nombrepaciente" class="form-control"  placeholder="Nombre">
@@ -100,10 +105,29 @@
                     <input type="text" name="apellidomaterno" class="form-control"  placeholder="Apellido Materno">
                 </div>
 
+                <div class="form-group col-md-3">
+                    <label>Genero</label>
+                    <input type="text" name="genero" class="form-control"  placeholder="genero">
+                </div>
 
-                <div class="form-group col-md-1">
+                 <div class="form-group col-md-3">
+                    <label>Causa del problema</label>
+                    <select class="form-control" name="causa">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="Oligodactilia">Oligodactilia</option>
+                        <option value="Agenecia">Agenecia</option>
+                        <option value="Mano de pinza">Mano de pinza</option>
+                        <option value="Amputación">Amputación</option>
+                    </select>
+
+                <div class="">
+
+                 </div>
+
+
+                <div class="form-group col-md-3">
                     <label>Edad</label>
-                    <select class="form-control" name="edad">
+                    <select class="form-control" name="edadnino">
                         <option value="" disabled selected>Seleccione una opción</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
@@ -132,6 +156,8 @@
                 </div>
 
     </div>
+
+
 </div> <br>
 <div class="card">
     <div class="card-body" style="background-color:#EEEEEE ;">
@@ -156,10 +182,6 @@
                 <div class="form-group col-md-4">
                     <label>Parentesco</label>
                     <input type="text" name="parentesco" class="form-control" placeholder="Parentesco">
-                </div>
-                <div class="form-group col-md-4">
-                    <label>Correo electrónico</label>
-                    <input type="email" name="correoelectronico" class="form-control"  placeholder="Correo Electronico">
                 </div>
                 <div class="form-group col-md-4">
                     <label>Telefono</label>
@@ -275,12 +297,12 @@
             </div>
         </div>
     </div>
-            <div class="form-group">
+             <!--<<div class="form-group">
 
             </div>
-            <!--<label for="condiciones">Acepta las <a href="pagina_condiciones.html">condiciones</a> </label><input type="checkbox" name="condiciones" /> -->
+           label for="condiciones">Acepta las <a href="pagina_condiciones.html">condiciones</a> </label><input type="checkbox" name="condiciones" /> -->
 
-</form>
+
             <button type="submit" name="register" class="btn btn-primary btn-block">Registrar información</button>
         </form>
 

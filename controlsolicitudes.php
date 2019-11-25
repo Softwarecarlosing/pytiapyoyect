@@ -1,5 +1,5 @@
 <?php
- $conexion=mysqli_connect("localhost","root","","brazosoficial");
+ $conexion=mysqli_connect("localhost","root","","brazosultimate");
 ?>
 
 <!doctype html>
@@ -161,23 +161,26 @@ input[type=date]:focus {
 <div class="table-responsive">
 
 <table class="table table-striped">
+
          <tr>
-         <td>Fecha de registro</td>
+         <td>Fecha</td>
          <td> Nombre </td>
          <td> Apellido paterno </td>
          <td> Apellido materno </td>
-         <td> Edad </td>
+         <td> Genero</td>
+         <td>Causa</td>
+         <td>Edad</td>
          <td> Nombre tutor</td>
          <td> Apellido paterno</td>
          <td> Apellido materno</td>
          <td> parentesco</td>
-         <td> Correo electrónico</td>
+         <td> Correo Electronico</td>
          <td> Telefono</td>
          <td> Estado</td>
          <td> Municipio</td>
          <td> Calle</td>
          <td> No exterior</td>
-         <td> Condición</td>
+         <td> Condicion</td>
          <td> Ingreso mensual</td>
          <td> Dedo menique</td>
          <td> Dedo anular</td>
@@ -188,16 +191,17 @@ input[type=date]:focus {
          <td> Largo muñon</td>
          <td> Ancho muñeca</td>
          <td> Super heroe</td>
-         <td> Estatus</td>
          </tr>
-
 
          <?php
          if($_SERVER['REQUEST_METHOD'] == 'POST'){
          $fechainicio = trim($_POST['fechainicio']);
          $fechafin = trim($_POST['fechafin']);
 
-         $sql="SELECT * FROM registropostulantess WHERE CAST(fecha AS DATE) BETWEEN '$fechainicio' AND '$fechafin'";
+
+         $sql="SELECT P.fecha ,P.nombrepaciente, P.apellidopaterno , P.apellidomaterno, P.genero, P.causa, P.edadnino ,D.nombretutor, D.apellidopaternotutor, D.apellidopaternotutor, D.parentesco, D.correoelectronico, D.telefono, D.estado, D.municipio,D.calle,D.noexterior, D.condicion, D.ingresomensual, MS.largodedomenique, MS.largodedoanular, MS.largodedomedio    , MS.largodedopulgar, MS.largodorso, MA.anchomunon, MA.largomunon, MA.anchomuneca, MA.superheroe FROM postulantes P, detalleinfotutor D, manosaludable MS, manoafectacion MA WHERE CAST(P.fecha AS DATE) BETWEEN '$fechainicio' AND '$fechafin' AND P.correoelectronico = D.correoelectronico AND D.correoelectronico = MS.correoelectronico AND MS.correoelectronico = MA.correoelectronico";
+
+        // $sql="SELECT * FROM registropostulantess WHERE CAST(fecha AS DATE) BETWEEN '$fechainicio' AND '$fechafin'";
          $result=mysqli_query($conexion,$sql);
 
          while($mostrar=mysqli_fetch_array($result)){
@@ -205,7 +209,7 @@ input[type=date]:focus {
 
 
          <tr>
-         <td> <?php echo $mostrar[27] ?> </td>
+         <td> <?php echo $mostrar[0] ?>  </td>
          <td> <?php echo $mostrar[1] ?>  </td>
          <td> <?php echo $mostrar[2] ?> </td>
          <td> <?php echo $mostrar[3] ?> </td>
@@ -232,6 +236,8 @@ input[type=date]:focus {
          <td> <?php echo $mostrar[24] ?> </td>
          <td> <?php echo $mostrar[25] ?> </td>
          <td> <?php echo $mostrar[26] ?> </td>
+         <td> <?php echo $mostrar[27] ?> </td>
+         <td class="bot"><a href="borrar.php?id=<?php echo $personas->idAdmin?>"><input type='button' name='del' id='del' value='Borrar'></a></td>
          </tr>
          <?php
          }
@@ -281,11 +287,13 @@ input[type=date]:focus {
 <table class="table table-striped">
 
          <tr>
-         <td> Edad </td>
-         <td>Fecha de registro</td>
+         <td>Edad</td>
+         <td>Fecha</td>
          <td> Nombre </td>
          <td> Apellido paterno </td>
          <td> Apellido materno </td>
+         <td> Genero</td>
+         <td>Causa</td>
          <td> Nombre tutor</td>
          <td> Apellido paterno</td>
          <td> Apellido materno</td>
@@ -307,17 +315,17 @@ input[type=date]:focus {
          <td> Largo muñon</td>
          <td> Ancho muñeca</td>
          <td> Super heroe</td>
-         <td> Estatus</td>
          </tr>
-
 
          <?php
          if($_SERVER['REQUEST_METHOD'] == 'POST'){
          $edad = trim($_POST['edad']);
 
 
-         $sql="SELECT * FROM registropostulantess WHERE '$edad' = edad";
-         $result=mysqli_query($conexion,$sql);
+         $sqledad="SELECT P.edadnino, P.fecha ,P.nombrepaciente, P.apellidopaterno , P.apellidomaterno, P.genero, P.causa, D.nombretutor, D.apellidopaternotutor, D.apellidopaternotutor, D.parentesco, D.correoelectronico, D.telefono, D.estado, D.municipio,D.calle,D.noexterior, D.condicion, D.ingresomensual, MS.largodedomenique, MS.largodedoanular, MS.largodedomedio, MS.largodedopulgar, MS.largodorso, MA.anchomunon, MA.largomunon, MA.anchomuneca, MA.superheroe FROM postulantes P, detalleinfotutor D, manosaludable MS, manoafectacion MA WHERE '$edad' = P.edadnino AND P.correoelectronico = D.correoelectronico AND D.correoelectronico = MS.correoelectronico AND MS.correoelectronico = MA.correoelectronico";
+
+
+         $result=mysqli_query($conexion,$sqledad);
 
          while($mostrar=mysqli_fetch_array($result)){
           ?>
@@ -325,10 +333,11 @@ input[type=date]:focus {
 
 
          <tr>
-         <td> <?php echo $mostrar[27] ?> </td>
+         <td> <?php echo $mostrar[0] ?>  </td>
          <td> <?php echo $mostrar[1] ?>  </td>
          <td> <?php echo $mostrar[2] ?> </td>
          <td> <?php echo $mostrar[3] ?> </td>
+         <td> <?php echo $mostrar[4] ?> </td>
          <td> <?php echo $mostrar[5] ?> </td>
          <td> <?php echo $mostrar[6] ?> </td>
          <td> <?php echo $mostrar[7] ?> </td>
@@ -351,6 +360,7 @@ input[type=date]:focus {
          <td> <?php echo $mostrar[24] ?> </td>
          <td> <?php echo $mostrar[25] ?> </td>
          <td> <?php echo $mostrar[26] ?> </td>
+         <td> <?php echo $mostrar[27] ?> </td>
          </tr>
          <?php
          }
@@ -390,11 +400,14 @@ input[type=date]:focus {
 
 <table class="table table-striped">
          <tr>
-         <td> Edad </td>
-         <td>Fecha de registro</td>
+         <td> Municipio</td>
+         <td>Fecha</td>
          <td> Nombre </td>
          <td> Apellido paterno </td>
          <td> Apellido materno </td>
+         <td> Genero</td>
+         <td>Causa</td>
+         <td>Edad</td>
          <td> Nombre tutor</td>
          <td> Apellido paterno</td>
          <td> Apellido materno</td>
@@ -402,7 +415,6 @@ input[type=date]:focus {
          <td> Correo Electronico</td>
          <td> Telefono</td>
          <td> Estado</td>
-         <td> Municipio</td>
          <td> Calle</td>
          <td> No exterior</td>
          <td> Condicion</td>
@@ -416,7 +428,6 @@ input[type=date]:focus {
          <td> Largo muñon</td>
          <td> Ancho muñeca</td>
          <td> Super heroe</td>
-         <td> Estatus</td>
          </tr>
 
 
@@ -424,9 +435,9 @@ input[type=date]:focus {
          if($_SERVER['REQUEST_METHOD'] == 'POST'){
          $municipio = trim($_POST['municipio']);
 
+         $sqlmunicipio="SELECT D.municipio, P.fecha ,P.nombrepaciente, P.apellidopaterno , P.apellidomaterno, P.genero, P.causa, P.edadnino ,D.nombretutor, D.apellidopaternotutor, D.apellidopaternotutor, D.parentesco, D.correoelectronico, D.telefono, D.estado, D.calle,D.noexterior, D.condicion, D.ingresomensual, MS.largodedomenique, MS.largodedoanular, MS.largodedomedio,MS.largodedopulgar, MS.largodorso, MA.anchomunon, MA.largomunon, MA.anchomuneca, MA.superheroe FROM postulantes P, detalleinfotutor D, manosaludable MS, manoafectacion MA WHERE '$municipio' = D.municipio AND P.correoelectronico = D.correoelectronico AND D.correoelectronico = MS.correoelectronico AND MS.correoelectronico = MA.correoelectronico";
 
-         $sql="SELECT * FROM registropostulantess WHERE '$municipio' = municipio";
-         $result=mysqli_query($conexion,$sql);
+         $result=mysqli_query($conexion,$sqlmunicipio);
 
          while($mostrar=mysqli_fetch_array($result)){
           ?>
@@ -434,12 +445,11 @@ input[type=date]:focus {
 
 
          <tr>
-         <td> <?php echo $mostrar[4] ?> </td>
-         <td> <?php echo $mostrar[27] ?> </td>
+         <td> <?php echo $mostrar[0] ?> </td>
          <td> <?php echo $mostrar[1] ?>  </td>
          <td> <?php echo $mostrar[2] ?> </td>
          <td> <?php echo $mostrar[3] ?> </td>
-
+         <td> <?php echo $mostrar[4] ?> </td>
          <td> <?php echo $mostrar[5] ?> </td>
          <td> <?php echo $mostrar[6] ?> </td>
          <td> <?php echo $mostrar[7] ?> </td>
@@ -462,6 +472,8 @@ input[type=date]:focus {
          <td> <?php echo $mostrar[24] ?> </td>
          <td> <?php echo $mostrar[25] ?> </td>
          <td> <?php echo $mostrar[26] ?> </td>
+         <td> <?php echo $mostrar[27] ?> </td>
+
          </tr>
          <?php
          }

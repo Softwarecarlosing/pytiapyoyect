@@ -2,7 +2,7 @@
 
 
 
-      $conex = mysqli_connect("localhost","root","","brazosoficial");
+      $conex = mysqli_connect("localhost","root","","brazosultimate");
 
 
 

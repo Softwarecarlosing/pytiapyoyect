@@ -13,15 +13,17 @@
 
        if (isset($_POST['register'])){
          if(strlen($_POST['nombrepaciente']) >= 1 && strlen($_POST['correoelectronico']) >= 1){
+           $correoelectronico = trim($_POST['correoelectronico']);
            $nombrepaciente = trim($_POST['nombrepaciente']);
            $apellidopaterno = trim($_POST['apellidopaterno']);
            $apellidomaterno = trim($_POST['apellidomaterno']);
-           $edad = trim($_POST['edad']);
+           $genero = trim($_POST['genero']);
+           $causa = trim($_POST['causa']);
+           $edadnino = trim($_POST['edadnino']);
            $nombretutor = trim($_POST['nombretutor']);
            $apellidopaternotutor = trim($_POST['apellidopaternotutor']);
            $apellidomaternotutor = trim($_POST['apellidomaternotutor']);
            $parentesco = trim($_POST['parentesco']);
-           $correoelectronico = trim($_POST['correoelectronico']);
            $telefono = trim($_POST['telefono']);
            $estado = trim($_POST['estado']);
            $municipio = trim($_POST['municipio']);
@@ -38,11 +40,25 @@
            $largomunon = trim($_POST['largomunon']);
            $anchomuneca = trim($_POST['anchomuneca']);
            $superheroe = trim($_POST['superheroe']);
-           $consulta = "INSERT INTO registropostulantess (nombrepaciente,apellidopaterno, apellidomaterno, edad, nombretutor, apellidopaternotutor, apellidomaternotutor, parentesco, correoelectronico, telefono, estado, municipio, calle, noexterior, condicion, ingresomensual,dedomenique,dedoanular,dedomedio,dedopulgar,largodorso,anchomunon,largomunon,anchomuneca,superheroe) VAlUES ('$nombrepaciente','$apellidopaterno', '$apellidomaterno', '$edad','$nombretutor', '$apellidopaternotutor','$apellidomaternotutor','$parentesco','$correoelectronico','$telefono','$estado','$municipio','$calle','$noexterior','$condicion','$ingresomensual','$dedomenique','$dedoanular','$dedomedio','$dedopulgar','$largodorso','$anchomunon','$largomunon','$anchomuneca','$superheroe')";
 
-           $resultado = mysqli_query($conex,$consulta);
+           $postulantes = "INSERT INTO postulantes (correoelectronico,nombrepaciente,apellidopaterno,apellidomaterno,genero,causa,edadnino) VAlUES ('$correoelectronico','$nombrepaciente','$apellidopaterno','$apellidomaterno','$genero','$causa','$edadnino')";
 
-           if($resultado){
+           $resultado = mysqli_query($conex,$postulantes);
+
+           $detalleinfotutor = "INSERT INTO detalleinfotutor (correoelectronico,nombretutor,apellidopaternotutor,apellidomaternotutor,parentesco,telefono,estado,municipio,calle,noexterior,ingresomensual,condicion) VAlUES ('$correoelectronico','$nombretutor','$apellidopaternotutor','$apellidomaternotutor','$parentesco','$telefono','$estado','$municipio','$calle','$noexterior','$ingresomensual','$condicion')";
+
+           $resgistrotutor = mysqli_query($conex,$detalleinfotutor);
+
+           $manosana = "INSERT INTO manosaludable (correoelectronico,largodedomenique,largodedoanular,largodedomedio,largodedopulgar,largodorso) VAlUES ('$correoelectronico','$dedomenique','$dedoanular','$dedomedio','$dedopulgar','$largodorso')";
+
+           $registrosana = mysqli_query($conex,$manosana);
+
+           $manoafectada = "INSERT INTO manoafectacion(correoelectronico,anchomunon,largomunon,anchomuneca,superheroe ) VAlUES ('$correoelectronico','$anchomunon','$largomunon','$anchomuneca','$superheroe')";
+
+           $registroafectada = mysqli_query($conex,$manoafectada);
+
+
+           if($registroafectada){
 
                  ?>
                   <body>

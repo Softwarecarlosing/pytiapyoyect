@@ -1,5 +1,5 @@
 <?php
- $conexion=mysqli_connect("localhost","root","","brazosoficial");
+ $conexion=mysqli_connect("localhost","root","","brazosultimate");
 ?>
 
 <!doctype html>
@@ -100,10 +100,13 @@
 
 <table class="table table-striped">
          <tr>
+         <td>Fecha</td>
          <td> Nombre </td>
          <td> Apellido paterno </td>
          <td> Apellido materno </td>
-         <td> edad </td>
+         <td> Genero</td>
+         <td>Causa</td>
+         <td>Edad</td>
          <td> Nombre tutor</td>
          <td> Apellido paterno</td>
          <td> Apellido materno</td>
@@ -125,13 +128,11 @@
          <td> Largo muñon</td>
          <td> Ancho muñeca</td>
          <td> Super heroe</td>
-         <td> Estatus</td>
-         <td>fecha de registro</td>
          </tr>
 
 
          <?php
-         $sql="SELECT * from registropostulantess";
+         $sql="SELECT P.fecha ,P.nombrepaciente, P.apellidopaterno , P.apellidomaterno, P.genero, P.causa, P.edadnino ,D.nombretutor, D.apellidopaternotutor, D.apellidopaternotutor, D.parentesco, D.correoelectronico, D.telefono, D.estado, D.municipio,D.calle,D.noexterior, D.condicion, D.ingresomensual, MS.largodedomenique, MS.largodedoanular, MS.largodedomedio    , MS.largodedopulgar, MS.largodorso, MA.anchomunon, MA.largomunon, MA.anchomuneca, MA.superheroe FROM postulantes P, detalleinfotutor D, manosaludable MS, manoafectacion MA WHERE P.correoelectronico = D.correoelectronico AND D.correoelectronico = MS.correoelectronico AND MS.correoelectronico = MA.correoelectronico";
          $result=mysqli_query($conexion,$sql);
 
          while($mostrar=mysqli_fetch_array($result)){
@@ -140,6 +141,7 @@
 
 
          <tr>
+         <td> <?php echo $mostrar[0] ?>  </td>
          <td> <?php echo $mostrar[1] ?>  </td>
          <td> <?php echo $mostrar[2] ?> </td>
          <td> <?php echo $mostrar[3] ?> </td>
@@ -167,6 +169,7 @@
          <td> <?php echo $mostrar[25] ?> </td>
          <td> <?php echo $mostrar[26] ?> </td>
          <td> <?php echo $mostrar[27] ?> </td>
+         <td class="bot"><a href="borrar.php?id=<?php echo $personas->idAdmin?>"><input type='button' name='del' id='del' value='Borrar'></a></td>
          </tr>
          <?php
 
