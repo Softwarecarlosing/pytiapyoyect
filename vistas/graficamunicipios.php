@@ -49,13 +49,13 @@
 						 ],
 						// Pongo el título para el eje de las 'X'
 						title: {
-							text: 'Meses'
+							text: ''
 						}
 					},
 					yAxis: {
 						// Pongo el título para el eje de las 'Y'
 						title: {
-							text: 'Nº Visitas'
+							text: ''
 						}
 					},
 					// Doy formato al la "cajita" que sale al pasar el ratón por encima de la gráfica

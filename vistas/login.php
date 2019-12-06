@@ -1,126 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Login V1</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sesiones</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+    <link rel="icon" type="css/login/image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/login/vendor/animate/animate.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/login/css/main.css">
+<!--===============================================================================================-->
 
-    <link rel="stylesheet" href="main.css">
-<!-- -------------------------------------------------- -->
-    <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="img/Imagen1.png"  type="image/png">
-        <title>Brazos Firmes</title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="vendors/linericon/style.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
-        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
-        <link rel="stylesheet" href="vendors/animate-css/animate.css">
-        <link rel="stylesheet" href="vendors/popup/magnific-popup.css">
-        <!-- main css -->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/responsive.css">
-</head>
-<body>
 
- <header class="header_area">
-            <div class="main_menu">
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <div class="container">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <a class="navbar-brand logo_h" href="index.html"><img src="img/Imagen1.png" width="125" height="125" alt=""></a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="css/login/images/logobrazo.png" alt="IMG">
+                </div>
+
+                <form class="login100-form validate-form" form action="" method="POST" >
+                     <?php
+
+                     if(isset($errorLogin)){
+                        echo $errorLogin;
+                     }
+
+                     ?>
+                    <span class="login100-form-title">
+                        Ingresa tus datos para ingresar al sistema
+                    </span>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="username" placeholder="username">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit" >
+                            Login
                         </button>
-                         <h2> Ingresa al sistema de administadores </h2>
-
-                        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                            <ul class="nav navbar-nav menu_nav ml-auto">
-
-                                <li class="nav-item"><a class="nav-link" href="index.html">Ir a sitio oficial</a></li>
-
-
-                            </ul>
-                        </div>
                     </div>
-                </nav>
+
+                    <div class="text-center p-t-12">
+                        <span class="txt1">
+                            Forgot
+                        </span>
+                        <a class="txt2" href="#">
+                            Username / Password?
+                        </a>
+                    </div>
+
+                    <div class="text-center p-t-136">
+                        <a class="txt2" href="#">
+                            Create your Account
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </form>
             </div>
-        </header>
+        </div>
+    </div>
 
 
-        <section class="banner_area">
-            <div class="box_1620">
-                <div class="banner_inner d-flex align-items-center">
-                    <div class="container">
-                        <div class="banner_content text-center" >
-                            <h3><br>
-                                </h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
-    <form action="" method="POST">
-       <?php
-
-            if(isset($errorLogin)){
-                echo $errorLogin;
-            }
-
-       ?>
-        <center><h2>Iniciar sesión</h2></center>
-        <p>Correo del administrador:<br>
-        <input type="text" name="username"></p>
-        <p>Password: <br>
-        <input type="password" name="password"></p>
-        <p class="center"><input type="submit" class="main_btn" value="Iniciar Sesión"></p>
-    </form>
 
 
- <footer class="footer_area">
-            <div class="container">
-                <div class="row footer_inner">
-                    <div class="col-lg-4 ">
-                        <aside class="f_widget ab_widget">
-                            <div class="f_title">
-                                <h3>""</h3>
-                            </div>
+        <!--===============================================================================================-->
+    <script src="css/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+    <script src="css/login/vendor/bootstrap/js/popper.js"></script>
+    <script src="css/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+    <script src="css/login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+    <script src="css/login/vendor/tilt/tilt.jquery.min.js"></script>
+    <script >
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+<!--===============================================================================================-->
+    <script src="css/login/js/main.js"></script>
 
-                        </aside>
-                    </div>
-                    <div class="col-lg-4 ">
-                        <aside class="f_widget ab_widget">
-                            <div class="f_title">
-                                <h3>"Tu Puedes Donar!"</h3>
-                            </div>
-                            <p>
+<!--===============================================================================================-->
 
-                            </p>
-                        </aside>
-                    </div>
-                    <div class="col-lg-4">
-                        <aside class="f_widget social_widget">
-                            <div class="f_title">
-                                <h3>Redes Sociales</h3>
-                            </div>
-                            <p>Siguenos En Redes Sociales</p>
-                            <ul class="list">
-                                <li><a href="https://www.facebook.com/brazosfirmes/"><i class="fa fa-facebook" width="180" height="180"></i></a></li>
-                                <li><a href="https://www.instagram.com/fundacionbrazosfirmes/?hl=es-la"><i class="fa fa-instagram" width="180" height="180"></i></a></li>
-                                <li><a href="https://www.youtube.com/channel/UCj7fOi5HIrTHTy8oqRYArrQ"><i class="fa fa-youtube" width="180" height="180"></i></a></li>
-                            </ul>
-                        </aside>
-                    </div>
-                </div>
-            </div>
-        </footer>
+<!--===============================================================================================-->
+
+        <script src="jsadmin/jquery-3.3.1.min.js"></script>
+        <script src="jsadmin/popper.js"></script>
+        <script src="jsadmin/bootstrap.min.js"></script>
+        <script src="jsadmin/stellar.js"></script>
+        <script src="vendorsadmin/lightbox/simpleLightbox.min.js"></script>
+        <script src="vendorsadmin/nice-select/js/jquery.nice-select.min.js"></script>
+        <script src="vendorsadmin/isotope/imagesloaded.pkgd.min.js"></script>
+        <script src="vendorsadmin/isotope/isotope.pkgd.min.js"></script>
+        <script src="vendorsadmin/owl-carousel/owl.carousel.min.js"></script>
+        <script src="vendorsadmin/popup/jquery.magnific-popup.min.js"></script>
+        <script src="jsadmin/jquery.ajaxchimp.min.js"></script>
+        <script src="vendorsadmin/counter-up/jquery.waypoints.min.js"></script>
+        <script src="vendorsadmin/counter-up/jquery.counterup.js"></script>
+        <script src="jsadmin/mail-script.js"></script>
+        <script src="jsadmin/theme.js"></script>
 </body>
 </html>

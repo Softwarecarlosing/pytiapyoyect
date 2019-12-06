@@ -259,7 +259,7 @@ input[type=date]:focus {
 <h2>Buscar registros por edad</h2>
 <p>
 <p>
-<div class="">
+<div class="center large">
                     <select class="" name="edad">
                         <option value="5" disabled selected>Seleccione edad a buscar</option>
                         <option value="5">5</option>
