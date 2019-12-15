@@ -1,21 +1,8 @@
 <?php
 
-$nombre=$_SESSION['user'];
+
 
 $conexion=mysqli_connect("localhost","root","","brazosultimate");
-
-?>
-
-<?php
-
-  if(isset($_SESSION['user'])){
-
-
-  }else{
-  echo '<SCRIPT LANGUAGE="javascript">
-         location.href = "loginadmin.php";
-         </SCRIPT>';
-  }
 
 ?>
 
@@ -51,9 +38,14 @@ $conexion=mysqli_connect("localhost","root","","brazosultimate");
         <script src="code/modules/export-data.js"></script>
 
 
+       <!-- Importa las librerias de jQuery y las de Highcharts -->
+        <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="js/highcharts.js"></script>
+        <script type="text/javascript" src="js/exporting.js"></script>
+        <!-- grafica -->
 
-    </head>
-    <body>
+        </head>
+        <body>
 
         <header class="header_area">
             <div class="main_menu">
@@ -116,12 +108,8 @@ $conexion=mysqli_connect("localhost","root","","brazosultimate");
                                         <li class="nav-item"><a class="nav-link" href="grafic.php">Grafica de municipio</a>
                                         </a></li>
 
-                                        <li class="nav-item"><a class="nav-link" href="graficaedad.php">Grafica de edad</a>
+                                        <li class="nav-item"><a class="nav-link" href="controlsolicitudes.php">Grafica de edad</a>
                                         </a></li>
-
-                                         <li class="nav-item"><a class="nav-link" href="graficapade.php">Grafica  padecimiento</a>
-                                        </a></li>
-
 
                                     </ul>
                                 </li>
@@ -148,71 +136,43 @@ $conexion=mysqli_connect("localhost","root","","brazosultimate");
 
         <section class="banner_area">
             <div class="box_1620">
+				<div class="banner_inner d-flex align-items-center">
+					<div class="container">
+						<div class="banner_content text-center">
+							<h1>"Solicitud guardada exitosamente"</h1>
 
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
             </div>
         </section>
 
 
- <div id="container" style="height: 400px"></div>
-
-
-<script type="text/javascript">
-Highcharts.chart('container', {
-    chart: {
-        type: 'pie',
-        options3d: {
-            enabled: true,
-            alpha: 45,
-            beta: 0
-        }
-    },
-    title: {
-        text: 'Padecimientos de los postulantes'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            depth: 35,
-            dataLabels: {
-                enabled: true,
-                format: '{point.name}'
-            }
-        }
-    },
-    series: [{
-        type: 'pie',
-        name: 'Browser share',
-        data: [
-               <?php
-                 $sql = "select causa , count(*) as pade from postulantes group by causa order by pade";
-                 $result = mysqli_query($conexion,$sql);
-                while($registros = mysqli_fetch_array($result))
-                {
-                ?>
-                ['<?php echo $registros["causa"]; ?>',<?php echo $registros["pade"] ?>],
-                <?php
-                }
-                ?>
-        ]
-    }]
-});
-
-  </script>
-
-  </div>
+            <br><br><br><br>
 
 
 
+ </center>
+                        <div class="contact_info">
 
+                            <div class="info_item">
 
+                                <i class="lnr lnr-phone-handset"></i>
 
+                                <center>
+                                <h3></h3>
+                                </center>
 
+                            </div>
 
-
+                        </div>
+                          </center>
+                    </div>
+ </center>
 
 
 
@@ -225,27 +185,17 @@ Highcharts.chart('container', {
         <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
         <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
         <script src="vendors/isotope/isotope.pkgd.min.js"></script>
-        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
         <script src="vendors/popup/jquery.magnific-popup.min.js"></script>
+        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
         <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="js/mail-script.js"></script>
         <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
         <script src="vendors/counter-up/jquery.counterup.js"></script>
-        <script src="js/mail-script.js"></script>
+        <!-- contact js -->
+        <script src="js/jquery.form.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/contact.js"></script>
+
         <script src="js/theme.js"></script>
-
-
-
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

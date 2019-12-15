@@ -1,37 +1,21 @@
 <?php
-
-$nombre=$_SESSION['user'];
-
-$conexion=mysqli_connect("localhost","root","","brazosultimate");
-
+ $conexion=mysqli_connect("localhost","root","","brazosultimate");
 ?>
 
-<?php
 
-  if(isset($_SESSION['user'])){
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Highcharts Example</title>
 
+		<style type="text/css">
 
-  }else{
-  echo '<SCRIPT LANGUAGE="javascript">
-         location.href = "loginadmin.php";
-         </SCRIPT>';
-  }
+		</style>
 
-?>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<!doctype html>
-<html lang="en">
-
-    <head>
-        <script language="JavaScript">
-        javascript:window.history.forward(1);
-        </script>
-
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="imgadmin/Imagen1.png"  type="image/png">
+        <link rel="icon" href="img/Imagen1.png"  type="image/png">
         <title>Brazos Firmes</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../css/bootstrap.css">
@@ -51,11 +35,11 @@ $conexion=mysqli_connect("localhost","root","","brazosultimate");
         <script src="code/modules/export-data.js"></script>
 
 
+	</head>
 
-    </head>
-    <body>
 
-        <header class="header_area">
+	<body>
+    <header class="header_area">
             <div class="main_menu">
                 <nav class="navbar navbar-expand-lg navbar-dark">
                     <div class="container">
@@ -79,7 +63,7 @@ $conexion=mysqli_connect("localhost","root","","brazosultimate");
                                         </a></li>
                                     </ul>
                                 </li>
-
+                                <li class="nav-item"><a class="nav-link" href="loginadmin.php">Regresar a inicio</a></li>
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Adminstradores</a>
                                     <ul class="dropdown-menu">
@@ -119,7 +103,7 @@ $conexion=mysqli_connect("localhost","root","","brazosultimate");
                                         <li class="nav-item"><a class="nav-link" href="graficaedad.php">Grafica de edad</a>
                                         </a></li>
 
-                                         <li class="nav-item"><a class="nav-link" href="graficapade.php">Grafica  padecimiento</a>
+                                         <li class="nav-item"><a class="nav-link" href="graficapade.php">Grafica padecimiento</a>
                                         </a></li>
 
 
@@ -153,10 +137,10 @@ $conexion=mysqli_connect("localhost","root","","brazosultimate");
         </section>
 
 
- <div id="container" style="height: 400px"></div>
+<div id="container" style="height: 400px"></div>
 
 
-<script type="text/javascript">
+		<script type="text/javascript">
 Highcharts.chart('container', {
     chart: {
         type: 'pie',
@@ -201,22 +185,7 @@ Highcharts.chart('container', {
     }]
 });
 
-  </script>
-
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </script>
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/popper.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -232,20 +201,6 @@ Highcharts.chart('container', {
         <script src="vendors/counter-up/jquery.counterup.js"></script>
         <script src="js/mail-script.js"></script>
         <script src="js/theme.js"></script>
+	</body>
 
-
-
-    </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -8,6 +8,7 @@
 
 
  $conexion=mysqli_connect("localhost","root","","brazosultimate");
+
 ?>
 
 <?php
@@ -50,12 +51,12 @@
 </head>
 
 <body>
-<header class="header_area">
-        <div class="main_menu">
+     <header class="header_area">
+            <div class="main_menu">
                 <nav class="navbar navbar-expand-lg navbar-dark">
                     <div class="container">
                         <!-- Brand and toggle get grouped for better mobile display -->
-                        <a class="navbar-brand logo_h" href="../index.html"><img src="img/Imagen1.png" width="125" height="125" alt=""></a>
+                        <a class="navbar-brand logo_h" href="../index.html"><img src="imgadmin/Imagen1.png" width="125" height="125" alt=""></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -74,8 +75,7 @@
                                         </a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item submenu dropdown">
-                                    <a class="nav-link" href="loginadmin.php">Inicio</a>
+
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Adminstradores</a>
                                     <ul class="dropdown-menu">
@@ -104,6 +104,24 @@
                                     </ul>
                                 </li>
 
+                                 <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Indicadores graficas</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="graficaestados.php">Grafica estatal</a>
+                                        </a></li>
+                                        <li class="nav-item"><a class="nav-link" href="grafic.php">Grafica de municipio</a>
+                                        </a></li>
+
+                                        <li class="nav-item"><a class="nav-link" href="graficaedad.php">Grafica de edad</a>
+                                        </a></li>
+
+                                         <li class="nav-item"><a class="nav-link" href="graficapade.php">Grafica  padecimiento</a>
+                                        </a></li>
+
+
+                                    </ul>
+                                </li>
+
                                 <li class="nav-item submenu dropdown">
                                     <a class="nav-link" href="">Cuenta</a>
                                     <ul class="dropdown-menu">
@@ -123,9 +141,9 @@
             </div>
         </header>
 
+
         <section class="banner_area">
             <div class="box_1620">
-
 
             </div>
         </section>
@@ -140,7 +158,7 @@
 <div class="table-responsive">
 
 <table class="table table-striped">
-         <tr>
+         <tr >
          <td>Fecha</td>
          <td> Nombre </td>
          <td> Apellido paterno </td>
@@ -173,10 +191,12 @@
 
 
          <?php
+
          $sql="SELECT P.fecha ,P.nombrepaciente, P.apellidopaterno , P.apellidomaterno, P.genero, P.causa, P.edadnino ,D.nombretutor, D.apellidopaternotutor, D.apellidopaternotutor, D.parentesco, D.correoelectronico, D.telefono, D.estado, D.municipio,D.calle,D.noexterior, D.condicion, D.ingresomensual, MS.largodedomenique, MS.largodedoanular, MS.largodedomedio    , MS.largodedopulgar, MS.largodorso, MA.anchomunon, MA.largomunon, MA.anchomuneca, MA.superheroe FROM postulantes P, detalleinfotutor D, manosaludable MS, manoafectacion MA WHERE P.correoelectronico = D.correoelectronico AND D.correoelectronico = MS.correoelectronico AND MS.correoelectronico = MA.correoelectronico";
          $result=mysqli_query($conexion,$sql);
 
          while($mostrar=mysqli_fetch_array($result)){
+
           ?>
 
 
@@ -210,12 +230,22 @@
          <td> <?php echo $mostrar[25] ?> </td>
          <td> <?php echo $mostrar[26] ?> </td>
          <td> <?php echo $mostrar[27] ?> </td>
-         <td class="bot"><a href="borrar.php?id=<?php echo $personas->idAdmin?>"><input type='button' name='del' id='del' value='Borrar'></a></td>
-         </tr>
+
+
+         <td class="bot"><a href="includes/borrarsolicitud.php?correoelectronico=<?php echo $mostrar[11] ?>"><input type='button' name='del' id='del' value='Borrar' class="btn btn-primary" ></a></td>
+
+
+         <td class="bot"><a href="includes/editarsolicitud.php?nombre=<?php echo $mostrar[1]?> & apepa=<?php echo $mostrar[2]?> & apmap=<?php echo $mostrar[3]?> & genero=<?php echo $mostrar[4]?>  & causa=<?php echo $mostrar[5]?> & edad=<?php echo $mostrar[6]?>  & nombretutor =<?php echo $mostrar[7]?> & apellidopattut =<?php echo $mostrar[8]?> & apellidomattut =<?php echo $mostrar[9]?> & parentesco =<?php echo $mostrar[10]?> & correoelectronico =<?php echo $mostrar[11]?> & telefono =<?php echo $mostrar[12]?> & estado =<?php echo $mostrar[13]?> & municipio =<?php echo $mostrar[14]?> & calle =<?php echo $mostrar[15]?>  & no =<?php echo $mostrar[16]?>    & no =<?php echo $mostrar[17]?> & condicion =<?php echo $mostrar[18]?> & ingreso =<?php echo $mostrar[19]?> & dedomenique =<?php echo $mostrar[20]?> & dedoanular =<?php echo $mostrar[21]?> & dedomedio =<?php echo $mostrar[22]?> & dedopulgar =<?php echo $mostrar[23]?> & largodorso =<?php echo $mostrar[24]?> & anchomunon =<?php echo $mostrar[25]?> & largomunon =<?php echo $mostrar[26]?> & anchomuneca =<?php echo $mostrar[27]?> & superheroe =<?php echo $mostrar[28]?>  "><input type='button' name='del' id='del' value='Actualizar' class="btn btn-info"></a></td>
+
+
+
          <?php
 
          }
+
+
          ?>
+
      </table>
 </div>
 

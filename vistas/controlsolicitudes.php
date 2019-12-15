@@ -9,6 +9,8 @@
 ?>
 
 <?php
+
+
   if(isset($_SESSION['user'])){
 
 
@@ -20,6 +22,8 @@
   }
 
 ?>
+
+
 
 
 <!doctype html>
@@ -53,14 +57,15 @@
 
 </head>
 
-<body>
 
-    <header class="header_area">
-        <div class="main_menu">
+   <body>
+
+        <header class="header_area">
+            <div class="main_menu">
                 <nav class="navbar navbar-expand-lg navbar-dark">
                     <div class="container">
                         <!-- Brand and toggle get grouped for better mobile display -->
-                        <a class="navbar-brand logo_h" href="../index.html"><img src="img/Imagen1.png" width="125" height="125" alt=""></a>
+                        <a class="navbar-brand logo_h" href="../index.html"><img src="imgadmin/Imagen1.png" width="125" height="125" alt=""></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -80,9 +85,7 @@
                                     </ul>
                                 </li>
 
-                                <li class="nav-item active"><a class="nav-link" href="loginadmin.php">Inicio</a></li>
                                 <li class="nav-item submenu dropdown">
-
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Adminstradores</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item"><a class="nav-link" href="zoneusers.php">Ver o agregar</a>
@@ -110,6 +113,24 @@
                                     </ul>
                                 </li>
 
+                                 <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Indicadores graficas</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="graficaestados.php">Grafica estatal</a>
+                                        </a></li>
+                                        <li class="nav-item"><a class="nav-link" href="grafic.php">Grafica de municipio</a>
+                                        </a></li>
+
+                                        <li class="nav-item"><a class="nav-link" href="graficaedad.php">Grafica de edad</a>
+                                        </a></li>
+
+                                         <li class="nav-item"><a class="nav-link" href="graficapade.php">Grafica  padecimiento</a>
+                                        </a></li>
+
+
+                                    </ul>
+                                </li>
+
                                 <li class="nav-item submenu dropdown">
                                     <a class="nav-link" href="">Cuenta</a>
                                     <ul class="dropdown-menu">
@@ -130,13 +151,8 @@
         </header>
 
 
-
-
-
-
         <section class="banner_area">
             <div class="box_1620">
-
 
             </div>
         </section>
@@ -177,6 +193,17 @@ input[type=date]:focus {
 <p>
 <p>
 
+
+<p>
+<p>
+<center>
+<h2>Solicitudes de prótesis</h2>
+</center>
+<p>
+<p>
+
+
+
 <form method="POST" action="controlsolicitudes.php">
 
   <h2>Buscar por Fecha</h2>
@@ -191,16 +218,6 @@ input[type=date]:focus {
 
 </form>
 
-
-
-
-<p>
-<p>
-<center>
-<h2>Solicitudes de prótesis</h2>
-</center>
-<p>
-<p>
 
 <div class="table-responsive">
 
@@ -246,7 +263,9 @@ input[type=date]:focus {
          $sql="SELECT P.fecha ,P.nombrepaciente, P.apellidopaterno , P.apellidomaterno, P.genero, P.causa, P.edadnino ,D.nombretutor, D.apellidopaternotutor, D.apellidopaternotutor, D.parentesco, D.correoelectronico, D.telefono, D.estado, D.municipio,D.calle,D.noexterior, D.condicion, D.ingresomensual, MS.largodedomenique, MS.largodedoanular, MS.largodedomedio    , MS.largodedopulgar, MS.largodorso, MA.anchomunon, MA.largomunon, MA.anchomuneca, MA.superheroe FROM postulantes P, detalleinfotutor D, manosaludable MS, manoafectacion MA WHERE CAST(P.fecha AS DATE) BETWEEN '$fechainicio' AND '$fechafin' AND P.correoelectronico = D.correoelectronico AND D.correoelectronico = MS.correoelectronico AND MS.correoelectronico = MA.correoelectronico";
 
         // $sql="SELECT * FROM registropostulantess WHERE CAST(fecha AS DATE) BETWEEN '$fechainicio' AND '$fechafin'";
+
          $result=mysqli_query($conexion,$sql);
+
 
          while($mostrar=mysqli_fetch_array($result)){
           ?>
@@ -281,7 +300,10 @@ input[type=date]:focus {
          <td> <?php echo $mostrar[25] ?> </td>
          <td> <?php echo $mostrar[26] ?> </td>
          <td> <?php echo $mostrar[27] ?> </td>
-         <td class="bot"><a href="borrar.php?id=<?php echo $personas->idAdmin?>"><input type='button' name='del' id='del' value='Borrar'></a></td>
+
+         <td class="bot"><a href="includes/borrarsolicitud.php?correoelectronico=<?php echo $mostrar[11] ?>"><input type='button' name='del' id='del' value='Borrar' class="btn btn-primary" ></a></td>
+
+
          </tr>
          <?php
          }
@@ -372,6 +394,7 @@ input[type=date]:focus {
          $result=mysqli_query($conexion,$sqledad);
 
          while($mostrar=mysqli_fetch_array($result)){
+
           ?>
 
 
@@ -405,6 +428,7 @@ input[type=date]:focus {
          <td> <?php echo $mostrar[25] ?> </td>
          <td> <?php echo $mostrar[26] ?> </td>
          <td> <?php echo $mostrar[27] ?> </td>
+         <td class="bot"><a href="includes/borrarsolicitud.php?correoelectronico=<?php echo $mostrar[11] ?>"><input type='button' name='del' id='del' value='Borrar' class="btn btn-primary" ></a></td>
          </tr>
          <?php
          }
@@ -517,7 +541,7 @@ input[type=date]:focus {
          <td> <?php echo $mostrar[25] ?> </td>
          <td> <?php echo $mostrar[26] ?> </td>
          <td> <?php echo $mostrar[27] ?> </td>
-
+         <td class="bot"><a href="includes/borrarsolicitud.php?correoelectronico=<?php echo $mostrar[11] ?>"><input type='button' name='del' id='del' value='Borrar' class="btn btn-primary" ></a></td>
          </tr>
          <?php
          }

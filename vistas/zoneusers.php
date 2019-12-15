@@ -54,12 +54,12 @@ $nombre=$_SESSION['user'];
     $registros=$base->query("SELECT * FROM administradores")->fetchAll(PDO::FETCH_OBJ);
 
     if(isset($_POST["cr"])){
-       $nombreadmin=$_POST['nombreadmin'];
-       $password=$_POST['password'];
-       $correoelectronicoadmin=$_POST['correoelectronicoadmin'];
+       $nombreadmin=mysql_real_escape_string($_POST['nombreadmin']);
+       $password=mysql_real_escape_string(md5($_POST['password']));
+       $correoelectronicoadmin=mysql_real_escape_string($_POST['correoelectronicoadmin']);
        $sql="INSERT INTO administradores (nombreadmin,password,correoelectronicoadmin) values (:nombreadmin,:password,:correoelectronicoadmin)";
 
-       $resultado=$base->prepare($sql);
+      $resultado=$base->prepare($sql);
       $resultado->execute(array(":nombreadmin"=>$nombreadmin,":password"=>$password,":correoelectronicoadmin"=>$correoelectronicoadmin));
 
        header("Location:zoneusers.php");
@@ -67,15 +67,12 @@ $nombre=$_SESSION['user'];
 
 ?>
 
-
-
-
-<header class="header_area">
-   <div class="main_menu">
+ <header class="header_area">
+            <div class="main_menu">
                 <nav class="navbar navbar-expand-lg navbar-dark">
                     <div class="container">
                         <!-- Brand and toggle get grouped for better mobile display -->
-                        <a class="navbar-brand logo_h" href="../index.html"><img src="img/Imagen1.png" width="125" height="125" alt=""></a>
+                        <a class="navbar-brand logo_h" href="../index.html"><img src="imgadmin/Imagen1.png" width="125" height="125" alt=""></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -87,15 +84,14 @@ $nombre=$_SESSION['user'];
                             <ul class="nav navbar-nav menu_nav ml-auto">
 
                                <li class="nav-item submenu dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <!-- --></a>
                                     <ul class="dropdown-menu">
 
-                                    </a>
+
                                         </a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item submenu dropdown">
-                                    <a class="nav-link" href="loginadmin.php">Inicio</a>
+                                 <li class="nav-item"><a class="nav-link" href="loginadmin.php">Regresar a inicio</a></li>
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Adminstradores</a>
                                     <ul class="dropdown-menu">
@@ -124,6 +120,24 @@ $nombre=$_SESSION['user'];
                                     </ul>
                                 </li>
 
+                                 <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Indicadores graficas</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="graficaestados.php">Grafica estatal</a>
+                                        </a></li>
+                                        <li class="nav-item"><a class="nav-link" href="grafic.php">Grafica de municipio</a>
+                                        </a></li>
+
+                                        <li class="nav-item"><a class="nav-link" href="graficaedad.php">Grafica de edad</a>
+                                        </a></li>
+
+                                         <li class="nav-item"><a class="nav-link" href="graficapade.php">Grafica  padecimiento</a>
+                                        </a></li>
+
+
+                                    </ul>
+                                </li>
+
                                 <li class="nav-item submenu dropdown">
                                     <a class="nav-link" href="">Cuenta</a>
                                     <ul class="dropdown-menu">
@@ -143,12 +157,15 @@ $nombre=$_SESSION['user'];
             </div>
         </header>
 
+
         <section class="banner_area">
             <div class="box_1620">
 
-
             </div>
         </section>
+
+
+
 
 
 
@@ -182,7 +199,7 @@ $nombre=$_SESSION['user'];
       <td><?php echo $personas->nombreadmin ?></td>
       <td><?php echo $personas->password ?></td>
       <td><?php echo $personas->correoelectronicoadmin ?></td>
-      <td class="bot"><a href="borrar.php?id=<?php echo $personas->idAdmin?>"><input type='button' name='del' id='del' value='Borrar' class="btn btn-danger"></a></td>
+      <td class="bot"><a href="includes/borraruser.php?id=<?php echo $personas->idAdmin?>"><input type='button' name='del' id='del' value='Borrar' class="btn btn-danger"></a></td>
       <td class="bot"><input type='button' name='up' id='up' value='Actualizar' class="btn btn-info"></a></td>
      </tr>
 

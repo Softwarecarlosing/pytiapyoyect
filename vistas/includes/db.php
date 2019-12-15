@@ -10,7 +10,7 @@ class DB{
     //metodos y datos para conexion a base de datos
     public function __construct(){
         $this->host     = 'localhost';
-        $this->db       = 'brazosoficial';
+        $this->db       = 'brazosultimate';
         $this->user     = 'root';
         $this->password = "";
         $this->charset  = 'utf8mb4';

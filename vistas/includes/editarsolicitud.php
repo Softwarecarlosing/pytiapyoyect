@@ -18,21 +18,15 @@ $nombre=$_SESSION['user'];
   }
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <!doctype html>
 <html lang="en">
-
-    <head>
-        <script language="JavaScript">
-        javascript:window.history.forward(1);
-        </script>
-
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="imgadmin/Imagen1.png"  type="image/png">
-        <title>Brazos Firmes</title>
-        <!-- Bootstrap CSS -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="imgadmin/Imagen1.png" type="image/png">
+    <title>Contacto</title>
+    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../css/bootstrap.css">
         <link rel="stylesheet" href="../vendors/linericon/style.css">
         <link rel="stylesheet" href="../css/font-awesome.min.css">
@@ -48,19 +42,10 @@ $nombre=$_SESSION['user'];
         <script src="code/highcharts-3d.js"></script>
         <script src="code/modules/exporting.js"></script>
         <script src="code/modules/export-data.js"></script>
+</head>
+<body>
 
-
-       <!-- Importa las librerias de jQuery y las de Highcharts -->
-        <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" src="js/highcharts.js"></script>
-        <script type="text/javascript" src="js/exporting.js"></script>
-        <!-- grafica -->
-
-
-    </head>
-    <body>
-
-        <header class="header_area">
+ <header class="header_area">
             <div class="main_menu">
                 <nav class="navbar navbar-expand-lg navbar-dark">
                     <div class="container">
@@ -84,7 +69,7 @@ $nombre=$_SESSION['user'];
                                         </a></li>
                                     </ul>
                                 </li>
-
+                                <li class="nav-item"><a class="nav-link" href="loginadmin.php">Regresar a inicio</a></li>
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Adminstradores</a>
                                     <ul class="dropdown-menu">
@@ -124,7 +109,7 @@ $nombre=$_SESSION['user'];
                                         <li class="nav-item"><a class="nav-link" href="graficaedad.php">Grafica de edad</a>
                                         </a></li>
 
-                                         <li class="nav-item"><a class="nav-link" href="graficapade.php">Grafica  padecimiento</a>
+                                         <li class="nav-item"><a class="nav-link" href="graficapade.php">Grafica padecimiento</a>
                                         </a></li>
 
 
@@ -157,7 +142,6 @@ $nombre=$_SESSION['user'];
             </div>
         </section>
 
-
 <center><h2></h2><center>
 <div class="card">
     <div class="card-body" style="background-color:#EEEEEE ;">
@@ -185,16 +169,12 @@ $nombre=$_SESSION['user'];
                     <input type="text" name="apellidomaterno" class="form-control"  placeholder="Apellido Materno">
                 </div>
 
-                 <div class="form-group col-md-2">
+                <div class="form-group col-md-3">
                     <label>Genero</label>
-                    <select class="form-control" name="genero">
-                        <option value="" disabled selected>Seleccione una opción</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option>
-                    </select>
-                 </div>
+                    <input type="text" name="genero" class="form-control"  placeholder="genero">
+                </div>
 
-                 <div class="form-group col-md-2">
+                 <div class="form-group col-md-3">
                     <label>Causa del problema</label>
                     <select class="form-control" name="causa">
                         <option value="" disabled selected>Seleccione una opción</option>
@@ -203,9 +183,13 @@ $nombre=$_SESSION['user'];
                         <option value="Mano de pinza">Mano de pinza</option>
                         <option value="Amputación">Amputación</option>
                     </select>
+
+                <div class="">
+
                  </div>
 
-                <div class="form-group col-md-2">
+
+                <div class="form-group col-md-3">
                     <label>Edad</label>
                     <select class="form-control" name="edadnino">
                         <option value="" disabled selected>Seleccione una opción</option>
@@ -234,13 +218,13 @@ $nombre=$_SESSION['user'];
                     </select>
 
                 </div>
-               </div>
 
     </div>
-    </div>
-    <br>
-                <div class="card">
-                <div class="card-body" style="background-color:#EEEEEE ;">
+
+
+</div> <br>
+<div class="card">
+    <div class="card-body" style="background-color:#EEEEEE ;">
 
             <h4>Datos del tutor</h4><br>
             <div class="form-row">
@@ -301,20 +285,10 @@ $nombre=$_SESSION['user'];
                     <label>Codigo postal</label>
                     <input type="number" name="codigopostal" class="form-control" placeholder="Codigo postal">
                 </div>
-
-               <div class="form-group col-md-2">
-                    <label>Nivel economico de la familia</label>
-                    <select class="form-control" name="condicion">
-                        <option value="" disabled selected>Seleccione una opción</option>
-                        <option value="Alto">Alto</option>
-                        <option value="Medio">Media</option>
-                        <option value="Bajo">Bajo</option>
-                        <option value="Pobreza extrema">Pobreza extrema</option>
-                    </select>
-                 </div>
-
-
-
+                <div class="form-group col-md-4">
+                    <label>Estado economico</label>
+                    <input type="text" name="condicion" class="form-control"  placeholder="Condicion">
+                </div>
                 <div class="form-group col-md-4">
                     <label>Ingreso mensual del tutor</label>
                     <input type="number" name="ingresomensual" class="form-control"  placeholder="Ingreso mensual">
@@ -411,27 +385,20 @@ $nombre=$_SESSION['user'];
 
 
 
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/popper.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/stellar.js"></script>
-<script src="vendors/lightbox/simpleLightbox.min.js"></script>
-<script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
-<script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
-<script src="vendors/isotope/isotope.pkgd.min.js"></script>
-<script src="vendors/popup/jquery.magnific-popup.min.js"></script>
-<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-<script src="js/jquery.ajaxchimp.min.js"></script>
-<script src="js/mail-script.js"></script>
-<script src="vendors/counter-up/jquery.waypoints.min.js"></script>
-<script src="vendors/counter-up/jquery.counterup.js"></script>
-<!-- contact js -->
-<script src="js/jquery.form.js"></script>
-<script src="js/jquery.validate.min.js"></script>
-<script src="js/contact.js"></script>
-<!--gmaps Js-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-<script src="js/gmaps.min.js"></script>
-<script src="js/theme.js"></script>
+<script src="jsadmin/jquery-3.3.1.min.js"></script>
+        <script src="jsadmin/popper.js"></script>
+        <script src="jsadmin/bootstrap.min.js"></script>
+        <script src="jsadmin/stellar.js"></script>
+        <script src="vendorsadmin/lightbox/simpleLightbox.min.js"></script>
+        <script src="vendorsadmin/nice-select/js/jquery.nice-select.min.js"></script>
+        <script src="vendorsadmin/isotope/imagesloaded.pkgd.min.js"></script>
+        <script src="vendorsadmin/isotope/isotope.pkgd.min.js"></script>
+        <script src="vendorsadmin/owl-carousel/owl.carousel.min.js"></script>
+        <script src="vendorsadmin/popup/jquery.magnific-popup.min.js"></script>
+        <script src="jsadmin/jquery.ajaxchimp.min.js"></script>
+        <script src="vendorsadmin/counter-up/jquery.waypoints.min.js"></script>
+        <script src="vendorsadmin/counter-up/jquery.counterup.js"></script>
+        <script src="jsadmin/mail-script.js"></script>
+        <script src="jsadmin/theme.js"></script>
 </body>
 </html>

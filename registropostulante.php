@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="img/Imagen1.png" type="image/png">
-    <title>Contacto</title>
+    <title>Registro</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="vendors/linericon/style.css">
@@ -62,7 +62,7 @@
 
 
 <section class="banner_area">
- <center><h1>Es necesario ingresar todos los datos que se te piden</h1><center>
+
     <div class="box_1620">
 
 
@@ -79,11 +79,17 @@
     </div>
 </section>
 
+<div>
+<h3>Esperamos que este muy bien, si al ver el contenido de nuestro sitio le interesa gestionar una protesis, lo invitamos a que llene el siguiente registro para postularse a ser beneficiado, el siguiente video le ayudara a contestar las dos ultimas secciones del formulario las cuales son medidas del paciente.</h3>
+<div>
+
+
+<div>
 <center>
 <iframe width="600" height="315" src="https://www.youtube.com/embed/7bRW7bZ_86Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>
+</div>
 
-<center><h2></h2><center>
 <div class="card">
     <div class="card-body" style="background-color:#EEEEEE ;">
         <form method="POST" action="insertar_registro.php">
@@ -110,12 +116,16 @@
                     <input type="text" name="apellidomaterno" class="form-control"  placeholder="Apellido Materno">
                 </div>
 
-                <div class="form-group col-md-3">
+                 <div class="form-group col-md-2">
                     <label>Genero</label>
-                    <input type="text" name="genero" class="form-control"  placeholder="genero">
-                </div>
+                    <select class="form-control" name="genero">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                 </div>
 
-                 <div class="form-group col-md-3">
+                 <div class="form-group col-md-2">
                     <label>Causa del problema</label>
                     <select class="form-control" name="causa">
                         <option value="" disabled selected>Seleccione una opción</option>
@@ -124,13 +134,9 @@
                         <option value="Mano de pinza">Mano de pinza</option>
                         <option value="Amputación">Amputación</option>
                     </select>
-
-                <div class="">
-
                  </div>
 
-
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                     <label>Edad</label>
                     <select class="form-control" name="edadnino">
                         <option value="" disabled selected>Seleccione una opción</option>
@@ -159,13 +165,13 @@
                     </select>
 
                 </div>
+               </div>
 
     </div>
-
-
-</div> <br>
-<div class="card">
-    <div class="card-body" style="background-color:#EEEEEE ;">
+    </div>
+    <br>
+                <div class="card">
+                <div class="card-body" style="background-color:#EEEEEE ;">
 
             <h4>Datos del tutor</h4><br>
             <div class="form-row">
@@ -226,10 +232,20 @@
                     <label>Codigo postal</label>
                     <input type="number" name="codigopostal" class="form-control" placeholder="Codigo postal">
                 </div>
-                <div class="form-group col-md-4">
-                    <label>Estado economico</label>
-                    <input type="text" name="condicion" class="form-control"  placeholder="Condicion">
-                </div>
+
+               <div class="form-group col-md-2">
+                    <label>Nivel economico de la familia</label>
+                    <select class="form-control" name="condicion">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option value="Alto">Alto</option>
+                        <option value="Medio">Media</option>
+                        <option value="Bajo">Bajo</option>
+                        <option value="Pobreza extrema">Pobreza extrema</option>
+                    </select>
+                 </div>
+
+
+
                 <div class="form-group col-md-4">
                     <label>Ingreso mensual del tutor</label>
                     <input type="number" name="ingresomensual" class="form-control"  placeholder="Ingreso mensual">
@@ -313,8 +329,6 @@
 
     </div>
 </div><br>
-
-
 
 
 
